@@ -1,13 +1,25 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
 
 - [How to install docker image](#how-to-install-docker-image)
-- [To build the image run:](#to-build-the-image-run)
-- [To get the name of your images, run;](#to-get-the-name-of-your-images-run)
-- [To run the container run the exclusive command:](#to-run-the-container-run-the-exclusive-command)
-- [To stop the image with your terminal run:](#to-stop-the-image-with-your-terminal-run)
+- [How to build the image:](#how-to-build-the-image)
+- [How to get the name of your images:](#how-to-get-the-name-of-your-images)
+- [How to run the container:](#how-to-run-the-container)
+- [How to stop the image with the terminal:](#how-to-stop-the-image-with-the-terminal)
+- [Other Docker commands](#other-docker-commands)
+  - [nstall and run an image](#nstall-and-run-an-image)
+  - [shows the running images](#shows-the-running-images)
+  - [Shows all the images in your computer](#shows-all-the-images-in-your-computer)
+  - [Get the id of an image](#get-the-id-of-an-image)
+  - [Port binding](#port-binding)
+  - [How to start a container using the id](#how-to-start-a-container-using-the-id)
+  - [How to start a container using container name](#how-to-start-a-container-using-container-name)
+  - [How to stop a container using the id](#how-to-stop-a-container-using-the-id)
+  - [How to stop a container using container name](#how-to-stop-a-container-using-container-name)
+  - [How to check the history/logs of a container](#how-to-check-the-historylogs-of-a-container)
+  - [How to change the name of a container](#how-to-change-the-name-of-a-container)
+  - [Interactive Terminal](#interactive-terminal)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -79,3 +91,90 @@ docker stop <container-name>
 OR
 docker kill <container-name>
 ```
+
+# Other Docker commands
+
+## nstall and run an image
+
+docker run image-name:version i.e.
+
+```docker
+docker run alpine:3.20
+```
+
+## shows the running images
+
+```docker
+docker ps
+
+docker ps -a
+```
+
+## Shows all the images in your computer
+
+```docker
+docker images
+```
+
+## Get the id of an image
+
+```docker
+docker run -d <image-name>
+```
+
+## Port binding
+
+- run the image in a different port
+
+```docker
+docker run -p<your-port>:<default-port> .i.e.
+docker run -p6000:6379
+```
+
+## How to start a container using the id
+
+```docker
+docker start <id of the container>
+```
+
+## How to start a container using container name
+
+```docker
+docker start <name of the container>
+```
+
+## How to stop a container using the id
+
+```docker
+docker stop <id of the container>
+```
+
+## How to stop a container using container name
+
+```docker
+docker stop <name of the container>
+```
+
+## How to check the history/logs of a container
+
+```docker
+docker logs <container-name> or docker logs <id>
+```
+
+## How to change the name of a container
+
+```docker
+docker run -d -p6000:6937 --name <name-your-want-to-give-the-container> redis:4.4
+ .i.e.
+ docker run -d -p6000:6937 --name redis-older redis:4.4
+```
+
+## Interactive Terminal
+
+docker exec -it <id> /bin/bash or docker exec -it <container-name> /bin/bash
+
+- i: Keeps the standard input open, allowing you to interact with the container.
+- t: Allocates a pseudo-TTY (terminal), enabling you to get a terminal session, which is necessary for an interactive session.
+- it: interactive terminal
+  /bin/bash: This is the command you're executing inside the container.
+- /bin/bash opens a Bash shell, which allows you to interact with the container’s file system, run commands, and explore the container's environment interactively.
